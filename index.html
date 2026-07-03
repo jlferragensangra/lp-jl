@@ -267,12 +267,82 @@ footer{background:var(--aco-900);color:rgba(255,255,255,.7);padding:44px 0 28px;
 @media(max-width:720px){.foot-grid{grid-template-columns:1fr}}
 
 /* ============ WHATSAPP FLUTUANTE ============ */
-.wpp-float{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.3);transition:transform .15s}
+.wpp-float{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.3);transition:transform .15s;animation:wpp-pulse 2.6s ease-out infinite}
 .wpp-float:hover{transform:scale(1.08)}
 .wpp-float svg{width:30px;height:30px;fill:#fff}
+@keyframes wpp-pulse{
+  0%{box-shadow:0 6px 20px rgba(0,0,0,.3),0 0 0 0 rgba(37,211,102,.55)}
+  70%{box-shadow:0 6px 20px rgba(0,0,0,.3),0 0 0 18px rgba(37,211,102,0)}
+  100%{box-shadow:0 6px 20px rgba(0,0,0,.3),0 0 0 0 rgba(37,211,102,0)}
+}
+
+/* ============ ANIMAÇÕES / MOVIMENTO ============ */
+
+/* barra de progresso de leitura */
+.progress{position:fixed;top:0;left:0;right:0;height:4px;z-index:80;background:transparent;pointer-events:none}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--laranja-fogo),var(--laranja));box-shadow:0 0 10px rgba(249,127,22,.6)}
+
+/* faixa hazard deslizando */
+.hazard{background-size:auto;animation:hazard-slide 18s linear infinite}
+@keyframes hazard-slide{to{background-position:51px 0}}
+
+/* header que encolhe ao rolar */
+.header-inner{transition:padding .25s ease}
+header.shrink .header-inner{padding-top:8px;padding-bottom:8px}
+header{transition:box-shadow .25s ease}
+header.shrink{box-shadow:0 4px 18px rgba(0,0,0,.45)}
+
+/* entrada do hero */
+.hero .eyebrow,.hero p,.hero-ctas,.hero-stats{opacity:0;animation:rise-in .7s cubic-bezier(.2,.7,.2,1) forwards}
+.hero .eyebrow{animation-delay:.1s}
+.hero p{animation-delay:.55s}
+.hero-ctas{animation-delay:.7s}
+.hero-stats{animation-delay:.85s}
+@keyframes rise-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+h1 .w{display:inline-block;opacity:0;transform:translateY(.6em) rotate(2deg);animation:word-in .6s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes word-in{to{opacity:1;transform:translateY(0) rotate(0)}}
+.hero::after{animation:ring-float 9s ease-in-out infinite alternate}
+@keyframes ring-float{from{transform:translateY(0) scale(1)}to{transform:translateY(26px) scale(1.06)}}
+
+/* brilho pulsante no fundo do hero */
+.hero-glow{position:absolute;right:-10%;bottom:-30%;width:60%;height:120%;background:radial-gradient(closest-side,rgba(232,73,29,.32),transparent 70%);filter:blur(10px);pointer-events:none;animation:glow-pulse 6s ease-in-out infinite alternate}
+@keyframes glow-pulse{from{opacity:.5;transform:scale(.94)}to{opacity:1;transform:scale(1.06)}}
+
+/* reveal ao rolar */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.hero .eyebrow,.hero p,.hero-ctas,.hero-stats,h1 .w{opacity:1;transform:none}}
+
+/* brilho passando nos botões */
+.btn{position:relative;overflow:hidden}
+.btn::before{content:"";position:absolute;top:0;bottom:0;left:-75%;width:50%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .5s ease}
+.btn:hover::before,.btn:focus-visible::before{left:125%}
+
+/* cards de produto mais vivos */
+.prod{transition:border-color .2s,box-shadow .25s,transform .25s}
+.prod:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(232,73,29,.18)}
+.medida{transition:background .15s,color .15s,border-color .15s}
+.prod:hover .medida{border-color:var(--laranja-fogo)}
+.dif{transition:transform .2s,box-shadow .2s}
+.dif:hover{transform:translateX(4px);box-shadow:0 4px 14px rgba(0,0,0,.1)}
+.uni{transition:transform .25s,border-color .25s}
+.uni:hover{transform:translateY(-4px);border-color:rgba(249,127,22,.5)}
+
+/* ============ LETREIRO INDUSTRIAL ============ */
+.marquee{background:var(--aco-900);border-block:3px solid var(--laranja-fogo);overflow:hidden;padding:16px 0;position:relative}
+.marquee-track{display:flex;gap:0;width:max-content;animation:marquee-run 26s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-group{display:flex;align-items:center;flex-shrink:0}
+.marquee-item{font-family:var(--fonte-display);font-weight:900;font-stretch:80%;font-size:clamp(1.2rem,2.6vw,1.8rem);letter-spacing:.02em;text-transform:uppercase;color:var(--branco);white-space:nowrap;padding:0 18px}
+.marquee-item:nth-child(even){color:transparent;-webkit-text-stroke:1.2px rgba(249,127,22,.85)}
+.marquee-dot{width:10px;height:10px;background:var(--laranja-fogo);flex-shrink:0;transform:rotate(45deg)}
+@keyframes marquee-run{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 </style>
 </head>
 <body>
+
+<div class="progress" aria-hidden="true"><div class="progress-bar"></div></div>
 
 <div class="hazard" aria-hidden="true"></div>
 
@@ -301,6 +371,7 @@ footer{background:var(--aco-900);color:rgba(255,255,255,.7);padding:44px 0 28px;
 
 <!-- ================= HERO ================= -->
 <section class="hero" style="padding:0">
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="hero-inner">
     <span class="eyebrow">Há 10 anos em Angra dos Reis · RJ</span>
     <h1>Ferro e telha na medida <em>certa</em> pra sua obra.</h1>
@@ -320,7 +391,29 @@ footer{background:var(--aco-900);color:rgba(255,255,255,.7);padding:44px 0 28px;
   </div>
 </section>
 
-<div class="hazard" aria-hidden="true"></div>
+<!-- ================= LETREIRO ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-group">
+      <span class="marquee-item">Metalon</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Vergalhão</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Colunas</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Perfil U</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Telha Galvalume</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Telha Sanduíche</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Lambril</span><span class="marquee-dot"></span>
+    </div>
+    <div class="marquee-group">
+      <span class="marquee-item">Metalon</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Vergalhão</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Colunas</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Perfil U</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Telha Galvalume</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Telha Sanduíche</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Lambril</span><span class="marquee-dot"></span>
+    </div>
+  </div>
+</div>
 
 <!-- ================= SOBRE ================= -->
 <section class="sobre" id="sobre">
@@ -510,6 +603,24 @@ footer{background:var(--aco-900);color:rgba(255,255,255,.7);padding:44px 0 28px;
   </div>
 </section>
 
+<!-- ================= LETREIRO ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-group">
+      <span class="marquee-item">Orçamento rápido</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Estoque pronto</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Entrega em Angra</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Há 10 anos no mercado</span><span class="marquee-dot"></span>
+    </div>
+    <div class="marquee-group">
+      <span class="marquee-item">Orçamento rápido</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Estoque pronto</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Entrega em Angra</span><span class="marquee-dot"></span>
+      <span class="marquee-item">Há 10 anos no mercado</span><span class="marquee-dot"></span>
+    </div>
+  </div>
+</div>
+
 <!-- ================= CTA FINAL ================= -->
 <section class="cta-final">
   <div class="container">
@@ -557,6 +668,84 @@ footer{background:var(--aco-900);color:rgba(255,255,255,.7);padding:44px 0 28px;
 <a class="wpp-float" href="https://wa.me/5524999619962?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20JL%20Ferragens." target="_blank" rel="noopener" aria-label="Falar com a JL Ferragens no WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.4 1.3-1.9 1.3-.5.1-1.1.1-1.8-.1-2.5-.8-4.7-2.6-6.1-4.9-.6-1-1-2.1-.9-3.2 0-.6.3-1.2.7-1.6.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6c-.1.2-.2.4-.1.6.5.9 1.2 1.7 2 2.3.5.4 1 .7 1.6.9.2.1.4.1.6-.1l.7-.8c.2-.2.4-.3.6-.2l2 1c.2.1.4.2.4.4.1.2.1.6 0 1Z"/></svg>
 </a>
+
+<script>
+(function(){
+  var reduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- título do hero palavra por palavra ---- */
+  var h1 = document.querySelector('.hero h1');
+  if (h1 && !reduzido) {
+    var partes = [];
+    h1.childNodes.forEach(function(n){
+      if (n.nodeType === 3) {
+        n.textContent.split(/\s+/).forEach(function(p){ if(p) partes.push({t:p}); });
+      } else if (n.nodeType === 1) {
+        partes.push({t:n.textContent, em:n.tagName === 'EM'});
+      }
+    });
+    h1.innerHTML = partes.map(function(p,i){
+      var interno = p.em ? '<em>'+p.t+'</em>' : p.t;
+      return '<span class="w" style="animation-delay:'+(0.18 + i*0.07)+'s">'+interno+'</span>';
+    }).join(' ');
+  }
+
+  /* ---- reveal ao rolar ---- */
+  var alvos = document.querySelectorAll('.sec-head, .sobre-txt, .sobre-foto, .prod, .uni, .horario, details, .cta-final h2, .cta-final p, .cta-final .btn');
+  alvos.forEach(function(el,i){ el.classList.add('reveal'); });
+  /* cascata nos grupos de cards */
+  ['.prod-grid','.uni-grid','.dif-list','.faq-list'].forEach(function(sel){
+    var grupo = document.querySelector(sel);
+    if (grupo) Array.prototype.forEach.call(grupo.children, function(el,i){
+      el.classList.add('reveal');
+      el.style.transitionDelay = (i*0.08)+'s';
+    });
+  });
+  if ('IntersectionObserver' in window && !reduzido) {
+    var io = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- contadores animados nas estatísticas ---- */
+  var stats = document.querySelectorAll('.hero-stats .stat b');
+  function animaContador(el){
+    var texto = el.textContent.trim();
+    var alvo = parseInt(texto, 10);
+    var sufixo = texto.replace(/^\d+/,'');
+    if (isNaN(alvo)) return;
+    var inicio = null, dur = 1400;
+    function passo(ts){
+      if (!inicio) inicio = ts;
+      var p = Math.min((ts - inicio)/dur, 1);
+      p = 1 - Math.pow(1 - p, 3); /* ease-out */
+      el.textContent = Math.round(alvo * p) + sufixo;
+      if (p < 1) requestAnimationFrame(passo);
+    }
+    requestAnimationFrame(passo);
+  }
+  if (!reduzido) stats.forEach(animaContador);
+
+  /* ---- header encolhe + barra de progresso ---- */
+  var header = document.querySelector('header');
+  var barra = document.querySelector('.progress-bar');
+  function aoRolar(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    if (header) header.classList.toggle('shrink', y > 60);
+    if (barra) {
+      var total = document.documentElement.scrollHeight - window.innerHeight;
+      barra.style.width = (total > 0 ? (y/total)*100 : 0) + '%';
+    }
+  }
+  window.addEventListener('scroll', aoRolar, {passive:true});
+  aoRolar();
+})();
+</script>
 
 </body>
 </html>
