@@ -26,9 +26,10 @@ a{color:inherit}
 /* ============ HEADER ============ */
 header{position:sticky;top:0;z-index:50;background:var(--aco-900);color:var(--branco)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--max);margin:0 auto}
-.logo{font-family:var(--fonte-display);font-weight:900;font-size:1.4rem;letter-spacing:-.5px;text-decoration:none;display:flex;align-items:center;gap:10px}
-.logo span{color:var(--laranja-fogo)}
-.logo .marca{width:34px;height:34px;background:var(--laranja-fogo);border-radius:4px;display:grid;place-items:center;font-size:.85rem;color:#fff}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{height:44px;width:auto;transition:height .25s ease}
+header.shrink .logo img{height:38px}
+@media(max-width:520px){.logo img{height:38px}}
 nav ul{display:flex;gap:28px;list-style:none}
 nav a{text-decoration:none;font-size:.9rem;font-weight:500;opacity:.85;transition:opacity .15s}
 nav a:hover,nav a:focus-visible{opacity:1;color:var(--laranja)}
