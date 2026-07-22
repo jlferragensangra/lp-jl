@@ -1,13 +1,22 @@
 # Imagens do site
 
-Coloque aqui as imagens reais usadas na landing page.
+Imagens usadas na landing page. Nomes sem espaços/acentos para funcionar bem em URLs.
 
-## Necessário
+## Produtos (cards) — em uso
 
-- **`metalon.jpg`** — foto dos tubos de metalon (fundo branco funciona melhor,
-  proporção aproximadamente quadrada). Já referenciada no card "Metalon".
+- `metalon.png` — tubo de metalon
+- `vergalhao.jpg` — vergalhões de aço
+- `colunas.jpg` — colunas montadas
+- `perfil-u.jpg` — perfis U
+- `telha-sanduiche.jpg` — telha sanduíche (card "Telhas")
+- `lambril.jpg` — lambril
 
-## Sugeridas (próximos passos)
+## Logos
+
+- `logo-original.jpg` — logo colorido (fundo branco)
+- `logo-branco.png` — versão branca (obs.: sem transparência, precisa de tratamento para uso sobre fundo escuro)
+
+## Ainda faltando (sugestão)
 
 - Foto da loja / equipe (seção "Sobre")
-- Fotos dos demais produtos: vergalhão, colunas, perfil U, telhas, lambril
+- Foto real de telha galvalume (hoje o card "Telhas" usa a foto da sanduíche)
