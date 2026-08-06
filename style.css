@@ -84,11 +84,12 @@ h2{font-family:var(--fonte-display);font-weight:900;font-stretch:85%;font-size:c
 .prod-top{background:var(--aco-900);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:baseline}
 .prod-top h3{font-family:var(--fonte-display);font-weight:800;font-size:1.15rem;letter-spacing:-.3px}
 .prod-cod{font-family:var(--fonte-display);font-size:.68rem;letter-spacing:.12em;color:var(--laranja);text-transform:uppercase}
-.prod-foto{aspect-ratio:16/9;background:linear-gradient(140deg,#2A2E36,#1A1D22);display:grid;place-items:center;color:rgba(255,255,255,.35);font-size:.8rem;overflow:hidden}
-.prod-foto img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.prod-foto{position:relative;aspect-ratio:4/3;background:linear-gradient(140deg,#2A2E36,#1A1D22);display:grid;place-items:center;color:rgba(255,255,255,.35);font-size:.8rem;overflow:hidden}
+.prod-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
 .prod:hover .prod-foto img{transform:scale(1.05)}
+/* fotos de produto: mostra a imagem inteira, sem cortar, seja qual for o formato */
 .prod-foto.has-img{background:#fff}
-.prod-foto.has-img img{object-fit:contain;padding:8px}
+.prod-foto.has-img img{object-fit:contain;padding:14px}
 .prod-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:14px;flex:1}
 .medidas{display:flex;flex-wrap:wrap;gap:8px}
 .medida{font-family:var(--fonte-display);font-weight:700;font-size:.88rem;background:var(--aco-100);border:1px solid #D7DBE0;padding:5px 11px;border-radius:4px;color:var(--grafite)}
