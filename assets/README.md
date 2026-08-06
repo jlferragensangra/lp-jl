@@ -2,19 +2,26 @@
 
 Imagens usadas na landing page. Nomes sem espaços/acentos para funcionar bem em URLs.
 
-## Como subir uma foto de produto
+## Tamanhos exatos
 
-O card **nunca corta** a imagem: qualquer formato aparece inteiro (a caixa é 4:3 e a
-foto é encaixada dentro dela). Mas para ficar bonita e sem sobrar espaço vazio:
+| Onde | Tamanho | Proporção | Formato | Peso |
+|---|---|---|---|---|
+| Foto de produto (cards) | **1000 × 1000 px** | 1:1 | JPG/WebP, fundo branco | 40–80 KB |
+| Foto da loja/equipe (Sobre) | **1200 × 1500 px** | 4:5 | JPG/WebP | 100–180 KB |
+| Logo do header | **600 × 190 px** | ~3:1 | PNG transparente | até 50 KB |
+| Compartilhamento (`og-image.jpg`) | **1200 × 630 px** | 1.91:1 | JPG | até 200 KB |
+| Favicon | **512 × 512 px** | 1:1 | PNG | até 30 KB |
 
-| Item | Recomendado |
-|---|---|
-| Proporção | **quadrada (1:1)** ou 4:3 — evite fotos muito verticais |
-| Dimensão | 800 × 800 px (até 1200 × 1200) |
-| Fundo | **branco** — combina com o card e some a borda |
-| Formato | `.jpg` ou `.webp` (use `.png` só se precisar de transparência) |
-| Peso | 30–80 KB (máx. 150 KB) |
-| Nome | sem espaços e sem acentos: `perfil-u.jpg`, não `perfil u.jpg` |
+Medidas reais renderizadas (base do cálculo, dobradas para telas retina):
+card de produto vai até 510 × 383 px (celular, coluna única) e 354 × 266 px
+no desktop; foto da seção Sobre chega a 449 × 561 px.
+
+### Regras que valem sempre
+
+- Nome do arquivo **sem espaços e sem acentos**: `perfil-u.jpg`, não `perfil u.jpg`
+- O card de produto **nunca corta** a imagem — qualquer proporção aparece inteira.
+  A proporção 1:1 é a que aproveita melhor o espaço, sem sobrar vazio nas laterais.
+- Otimize antes de subir: [squoosh.app](https://squoosh.app) ou [tinypng.com](https://tinypng.com)
 
 Para trocar/adicionar: coloque o arquivo nesta pasta e aponte o `src` do
 `<img>` do card correspondente no `index.html`.
