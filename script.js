@@ -44,15 +44,15 @@
   var stats = document.querySelectorAll('.hero-stats .stat b');
   function animaContador(el){
     var texto = el.textContent.trim();
-    var alvo = parseInt(texto, 10);
-    var sufixo = texto.replace(/^\d+/,'');
-    if (isNaN(alvo)) return;
+    var m = texto.match(/^(\D*)(\d+)(\D*)$/);
+    if (!m) return;
+    var prefixo = m[1], alvo = parseInt(m[2], 10), sufixo = m[3];
     var inicio = null, dur = 1400;
     function passo(ts){
       if (!inicio) inicio = ts;
       var p = Math.min((ts - inicio)/dur, 1);
       p = 1 - Math.pow(1 - p, 3); /* ease-out */
-      el.textContent = Math.round(alvo * p) + sufixo;
+      el.textContent = prefixo + Math.round(alvo * p) + sufixo;
       if (p < 1) requestAnimationFrame(passo);
     }
     requestAnimationFrame(passo);
