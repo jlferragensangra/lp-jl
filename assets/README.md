@@ -7,7 +7,7 @@ Imagens usadas na landing page. Nomes sem espaços/acentos para funcionar bem em
 | Onde | Tamanho | Proporção | Formato | Peso |
 |---|---|---|---|---|
 | Foto de produto (cards) | **1000 × 1000 px** | 1:1 | JPG/WebP, fundo branco | 40–80 KB |
-| Foto da loja/equipe (Sobre) | **1200 × 1500 px** | 4:5 | JPG/WebP | 100–180 KB |
+| Foto da loja/equipe (Sobre) | **1200 × 960 px** | 5:4 | JPG/WebP | 100–180 KB |
 | Logo do header | **600 × 190 px** | ~3:1 | PNG transparente | até 50 KB |
 | Compartilhamento (`og-image.jpg`) | **1200 × 630 px** | 1.91:1 | JPG | até 200 KB |
 | Favicon | **512 × 512 px** | 1:1 | PNG | até 30 KB |
@@ -35,6 +35,14 @@ Para trocar/adicionar: coloque o arquivo nesta pasta e aponte o `src` do
 - `telha-sanduiche.jpg` — telha sanduíche (card "Telhas")
 - `lambril.jpg` — lambril
 
+## Loja
+
+- `loja.jpg` — fachadas das duas unidades (seção "Sobre"). A caixa da seção
+  usa proporção 5:4 (paisagem) para casar com essa foto sem cortar nada;
+  se um dia trocar por outra foto de proporção bem diferente, ajuste
+  `aspect-ratio` de `.sobre-foto` em `style.css` para não distorcer o
+  enquadramento.
+
 ## Logos
 
 - `logo-original.jpg` — logo colorido (fundo branco)
@@ -42,5 +50,4 @@ Para trocar/adicionar: coloque o arquivo nesta pasta e aponte o `src` do
 
 ## Ainda faltando (sugestão)
 
-- Foto da loja / equipe (seção "Sobre") — aqui o formato ideal é **vertical 4:5**
 - Foto real de telha galvalume (hoje o card "Telhas" usa a foto da sanduíche)
